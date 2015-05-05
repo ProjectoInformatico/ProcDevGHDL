@@ -79,7 +79,9 @@ begin
             B <= X"BB";
             -- S must be 54 and C, O flag
 
+        -- this is the end
         wait for pause;
+        wait;
     end process;
 
 end architecture ; -- arch
