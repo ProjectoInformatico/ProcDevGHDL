@@ -1,0 +1,4 @@
+*.o
+work-obj93.cf
+*.vcd
+alu_bench
