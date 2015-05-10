@@ -4,8 +4,8 @@ BENCHS_SRC := $(wildcard *_bench.vhdl)
 BENCHS 	   := $(BENCHS_SRC:.vhdl=)
 
 GHDL_CMD = 		ghdl
-GHDL_FLAGS  = 	-fexplicit --std=02 --ieee=synopsys --warn-no-vital-generic
-GHDL_SIM_OPT = 	--ieee-asserts=disable
+GHDL_FLAGS  =
+GHDL_SIM_OPT =  --stop-time=1000ns
 
 WAVEFORM_VIEWER = gtkwave
 
@@ -15,9 +15,9 @@ all: $(BENCHS)
 	@echo [$@]
 	$(GHDL_CMD) -a $(GHDL_FLAGS) *.vhdl
 	$(GHDL_CMD) -e $(GHDL_FLAGS) $@
-	$(GHDL_CMD) -r $(GHDL_FLAGS) $@ $(GHDL_SIM_OPT) --vcd=$@.vcd
-	$(WAVEFORM_VIEWER) $@.vcd
+	$(GHDL_CMD) -r $(GHDL_FLAGS) $@ $(GHDL_SIM_OPT) --wave=$@.ghw
+	$(WAVEFORM_VIEWER) $@.ghw
 
 clean:
 	$(GHDL_CMD) --clean
-	rm -rf *.vcd work-obj93.cf
+	rm -rf *.ghw work-obj93.cf
