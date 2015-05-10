@@ -44,7 +44,7 @@ architecture behavioral of bank_register_bench is
 
 begin
 
-	uut: bank_register 
+	uut: bank_register
 		 generic map(reg_size, reg_count)
 		 port map(clk, rst, w, data, reg_a, reg_b, reg_w, qa, qb);
 
@@ -52,9 +52,10 @@ begin
 
 	stim : process
 	begin
-		
+
 		wait for period*2;
-		reg_a <= 1;
+		rst <= '1';
+
 
 		wait;
 	end process ; -- stim
