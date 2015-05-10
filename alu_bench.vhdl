@@ -1,6 +1,6 @@
-library ieee;
-use ieee.std_logic_1164.all;
-
+library ieee ;
+    use ieee.std_logic_1164.all ;
+    use ieee.numeric_std.all ;
 
 entity alu_bench is 
 end entity ; -- alu_bench 
@@ -8,10 +8,10 @@ end entity ; -- alu_bench
 architecture behavior of alu_bench is 
     component alu 
         port(
-            A : in std_logic_vector(7 downto 0) ;
-            B : in std_logic_vector(7 downto 0) ;
+            A : in unsigned(7 downto 0) ;
+            B : in unsigned(7 downto 0) ;
             Ctrl_Alu : in std_logic_vector(2 downto 0);
-            S : out std_logic_vector(7 downto 0) ;
+            S : out unsigned(7 downto 0) ;
             N : out STD_LOGIC;
             O : out STD_LOGIC;
             Z : out STD_LOGIC;
@@ -21,11 +21,11 @@ architecture behavior of alu_bench is
 
     --Inputs
     signal Ctrl_Alu : std_logic_vector(2 downto 0);
-    signal A : std_logic_vector(7 downto 0);
-    signal B : std_logic_vector(7 downto 0);
+    signal A : unsigned(7 downto 0);
+    signal B : unsigned(7 downto 0);
 
     --Outputs
-    signal S : std_logic_vector(7 downto 0);
+    signal S : unsigned(7 downto 0);
     signal O : STD_LOGIC;
     signal C : STD_LOGIC;
     signal N : STD_LOGIC;

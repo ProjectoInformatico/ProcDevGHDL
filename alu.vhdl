@@ -1,14 +1,13 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee ;
+    use ieee.std_logic_1164.all ;
+    use ieee.numeric_std.all ;
 
 entity alu is
     port(
-        A : in std_logic_vector(7 downto 0) ;
-        B : in std_logic_vector(7 downto 0) ;
+        A : in unsigned(7 downto 0) ;
+        B : in unsigned(7 downto 0) ;
         Ctrl_Alu : in std_logic_vector(2 downto 0);
-        S : out std_logic_vector(7 downto 0) ;
+        S : out unsigned(7 downto 0) ;
         N : out STD_LOGIC;
         O : out STD_LOGIC;
         Z : out STD_LOGIC;
@@ -17,7 +16,7 @@ entity alu is
 end entity ; -- alu
 
 architecture Behavioral of alu is
-    signal Sortie : std_logic_vector(8 downto 0);
+    signal Sortie : unsigned(8 downto 0);
 begin
 
     Sortie <= ("0" & A) when Ctrl_Alu = "000" else -- simple copy
