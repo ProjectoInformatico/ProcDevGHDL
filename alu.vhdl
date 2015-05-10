@@ -22,7 +22,7 @@ begin
 
     Sortie <= ("0" & A) when Ctrl_Alu = "000" else -- simple copy
               ("0" & A) + B when Ctrl_Alu = "001" else -- addition
-              ("0" & A) - B when Ctrl_Alu = "010" else "000000000"; -- substraction
+              ("0" & A) - B when Ctrl_Alu = "010" else (others => '0'); -- substraction
 
     S <= Sortie(7 downto 0);
     Z <= '1' when Sortie(7 downto 0) = X"00" else '0';
