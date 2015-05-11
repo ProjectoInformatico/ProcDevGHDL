@@ -86,6 +86,30 @@ begin
             B <= X"BB";
             -- S must be DE and C, N flag
 
+        -- test de la multiplication
+        wait for pause;
+            Ctrl_Alu <= "011";
+            A <= X"00";
+            B <= X"FF";
+            -- S must be 00 and Z
+
+        wait for pause;
+            A <= X"01";
+            B <= X"02";
+            -- S must be 2
+
+        wait for pause;
+            A <= X"80";
+            B <= X"02";
+            -- S must be 2
+
+        -- test de la division
+        wait for pause;
+            Ctrl_Alu <= "100";
+            A <= X"02";
+            B <= X"02";
+            -- S must be 01 
+
         -- this is the end
         wait for pause;
         wait;
