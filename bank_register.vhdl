@@ -30,15 +30,17 @@ architecture behavioral of bank_register is
 
 begin
 
-	qa <= regs(reg_a);
-	qb <= regs(reg_b);
+	qa <= data when w = '1' and reg_a = reg_w else regs(reg_a); -- when read and write on same register
+	qb <= data when w = '1' and reg_b = reg_w else regs(reg_b);
 
 	bank_register_main : process( clk )
 	begin
 		if rising_edge(clk) then
 
-			if rst = '0' then
+			if rst = '0' then -- reset everything
 				regs <= (others => (others => '0'));
+			elsif w = '1' then -- write data on register reg_w
+				regs(reg_w) <= data;
 			end if ;
 
 		end if ;
