@@ -56,6 +56,25 @@ begin
 		wait for period*2;
 		rst <= '1';
 
+		-- écriture dans le premier registre
+		data <= X"0A";
+		W <= '1';
+		reg_w <= 1;
+		wait for period;
+		W <= '0';
+
+		-- lecture de la valeur écrite
+		wait for period;
+		reg_a <= 1;
+
+		-- Bypass D->Q
+		wait for period;
+		data<=X"FF";
+		W <= '1';
+		reg_w <= 1;
+		wait for period;
+		W <= '0';
+
 
 		wait;
 	end process ; -- stim
